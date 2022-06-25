@@ -9,7 +9,6 @@ export class PrivateItemsController {
 
     @Get()
     async getPrivateItems(@Req() req: Request, @Res() res: Response) {
-        console.log(req.headers["token"]);
         const token = req.headers["token"] as string;
         const response = await this.rateLimitService.checkRateLimit(token);
         res.statusCode = response.statusCode;
