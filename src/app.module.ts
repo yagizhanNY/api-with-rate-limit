@@ -1,7 +1,5 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { AuthenticationMiddleware } from './middlewares/authentication.middleware';
 import { PublicItemsModule } from './api/public/public-items/public-items.module';
 import { PrivateItemsModule } from './api/private/private-items/private-items.module';
@@ -13,8 +11,8 @@ import { RateLimitService } from './services/rate-limit/rate-limit.service';
   imports: [ConfigModule.forRoot({
     envFilePath: '.env'
   }), PublicItemsModule, PrivateItemsModule],
-  controllers: [AppController],
-  providers: [AppService, RedisService, RateLimitService],
+  controllers: [],
+  providers: [RedisService, RateLimitService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
